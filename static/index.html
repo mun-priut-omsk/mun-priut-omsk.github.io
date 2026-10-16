@@ -5,7 +5,7 @@
   <meta name="description" content="Открытый каталог собак: клички, приметы, номера бирок и фотографии.">
   <meta name="theme-color" content="#9f476d"><title>Собаки омского муниципального приюта</title>
   <link rel="stylesheet" href="style.css?v=20261016-soft1"><link rel="stylesheet" href="poster.css?v=20261016-soft1">
-  <script defer src="app.js?v=20261016-soft1"></script>
+  <script defer src="app.js?v=20261016-names-first"></script>
 </head>
 <body>
 <a class="skip-link" href="#catalog">Перейти к каталогу</a>
@@ -17,7 +17,7 @@
 </section>
 <section class="catalog-section wrap" id="catalog" aria-labelledby="catalog-title">
  <div class="section-heading"><div><p class="eyebrow">Все рядом</p><h2 id="catalog-title">Знакомьтесь, наши собаки</h2></div><p>Нажмите на фотографию,<br>чтобы узнать больше.</p></div>
- <div class="catalog-controls"><label class="search-box"><span class="search-icon" aria-hidden="true">⌕</span><span class="sr-only">Поиск по кличке, номеру бирки или приметам</span><input id="search" type="search" placeholder="Кличка, номер бирки или примета…" autocomplete="off"><kbd aria-hidden="true">/</kbd></label><label class="sort-label"><span class="sr-only">Порядок карточек</span><select id="sort"><option value="name">По кличке</option><option value="id">По номеру карточки</option><option value="newest">Сначала новые</option></select></label></div>
+ <div class="catalog-controls"><label class="search-box"><span class="search-icon" aria-hidden="true">⌕</span><span class="sr-only">Поиск по кличке, номеру бирки или приметам</span><input id="search" type="search" placeholder="Кличка, номер бирки или примета…" autocomplete="off"><kbd aria-hidden="true">/</kbd></label><label class="sort-label"><span class="sr-only">Порядок карточек</span><select id="sort"><option value="name">По кличке (А–Я)</option><option value="id">По номеру карточки</option><option value="newest">Сначала новые</option></select></label></div>
  <div class="filter-row"><div class="filters" role="group" aria-label="Фильтр собак"><button type="button" class="filter active" data-filter="all" aria-pressed="true">Все собаки</button><button type="button" class="filter" data-filter="named" aria-pressed="false">С кличками</button><button type="button" class="filter" data-filter="unnamed" aria-pressed="false">Без кличек</button><button type="button" class="filter" data-filter="home" aria-pressed="false">Уже дома <span aria-hidden="true">♡</span></button></div><p id="result-count" role="status" aria-live="polite">Загружаем каталог…</p></div>
  <p id="practice-banner" class="notice" hidden>Показаны ваши пробные изменения. Они видны только в этом браузере. <a href="practice.html">Открыть тренировочную панель</a></p>
  <div class="dog-grid" id="dog-grid"></div>

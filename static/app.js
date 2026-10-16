@@ -1,7 +1,9 @@
 (()=>{'use strict';
  const $=s=>document.querySelector(s),base=new URL('./',location.href),colors={'голубая':'#85b9d2','светло-оранжевая':'#e8af83','красная':'#bc5547','белая':'#e5e4db','синяя':'#68a4bc','оранжевая':'#d77b52','жёлтая':'#d4b458','зелёная':'#75a078','бежевая':'#b6a588'},practiceKey='dog-catalog-practice-v1';
  const node=(tag,cls,text)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n;};
- const unnamed=d=>/^Собака\b|^Без клички/i.test(d.name),norm=s=>String(s).toLowerCase().replaceAll('ё','е');
+ const unnamed=d=>!String(d.name||'').trim()||/^(?:Собака|Серия)(?:\s|$)|^Без\s+клички(?:\s|$)/iu.test(String(d.name).trim()),norm=s=>String(s).toLowerCase().replaceAll('ё','е');
+ const nameOrder=new Intl.Collator('ru',{sensitivity:'base',numeric:true});
+ const compareByName=(a,b)=>Number(unnamed(a))-Number(unnamed(b))||nameOrder.compare(String(a.name).trim(),String(b.name).trim())||nameOrder.compare(a.id,b.id);
  let dogs=[],filter='all',shown=24,current=null,index=0,trigger=null,practiceEnabled=false;
  function imageURL(path){return new URL(path,base).href;}
  function card(d){
@@ -16,7 +18,7 @@
  function filtered(){
   const q=norm($('#search').value.trim()),sort=$('#sort').value;
   const list=dogs.filter(d=>(filter==='all'||filter==='home'&&d.status==='home'||filter==='named'&&!unnamed(d)||filter==='unnamed'&&unnamed(d))&&norm([d.id,d.name,d.description,d.tag_number,...d.tag_colors].join(' ')).includes(q));
-  return list.sort((a,b)=>sort==='name'?(Number(unnamed(a))-Number(unnamed(b))||a.name.localeCompare(b.name,'ru')):sort==='newest'?b.id.localeCompare(a.id,'ru',{numeric:true}):a.id.localeCompare(b.id,'ru',{numeric:true}));
+  return list.sort((a,b)=>sort==='name'?compareByName(a,b):sort==='newest'?b.id.localeCompare(a.id,'ru',{numeric:true}):a.id.localeCompare(b.id,'ru',{numeric:true}));
  }
  function render(){const list=filtered(),grid=$('#dog-grid');grid.replaceChildren(...list.slice(0,shown).map(card));$('#result-count').textContent='Найдено: '+list.length;$('#empty-state').hidden=!!list.length;$('#load-more').hidden=list.length<=shown;}
  function setPhoto(){

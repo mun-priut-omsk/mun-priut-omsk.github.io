@@ -44,9 +44,9 @@
  document.addEventListener('keydown',e=>{if(e.key==='/'&&!$('#dog-dialog').open&&!['INPUT','TEXTAREA','SELECT'].includes(e.target.tagName)){e.preventDefault();$('#search').focus();}});
  function mergePractice(){if(!practiceEnabled)return;try{const overrides=JSON.parse(localStorage.getItem(practiceKey)||'{}');dogs=dogs.map(d=>({...d,...overrides[d.id]}));$('#practice-banner').hidden=!Object.keys(overrides).length;}catch{}}
  window.addEventListener('storage',e=>{if(e.key===practiceKey)location.reload();});
- fetch(new URL('data/dogs.json',base)).then(r=>{if(!r.ok)throw Error(r.status);return r.json();}).then(data=>{
+ fetch(new URL('data/dogs.json',base),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error(r.status);return r.json();}).then(data=>{
   dogs=data.dogs;practiceEnabled=data.practice_enabled;mergePractice();$('#practice-link').hidden=!practiceEnabled;$('#total-cards').textContent=data.card_count;$('#total-photos').textContent=new Intl.NumberFormat('ru').format(data.photo_count);
-  const big=dogs.find(d=>d.id==='S111')||dogs[0],small=dogs.find(d=>d.id==='S416')||dogs[1];$('#hero-main').src=imageURL(big.photos[0].full);$('#hero-main').alt=big.name;$('#hero-main-name').textContent=big.name;$('#hero-small').src=imageURL(small.photos[0].thumb);$('#hero-small').alt=small.name;$('#hero-small-name').textContent=small.name;
+  const big=dogs.find(d=>d.id==='S111')||dogs[0],small=dogs.find(d=>d.id==='S30')||dogs[1],smallPhoto=small.photos.find(p=>p.full==='media/S30/p05715.webp')||small.photos[0];$('#hero-main').src=imageURL(big.photos[0].full);$('#hero-main').alt=big.name;$('#hero-main-name').textContent=big.name;$('#hero-small').src=imageURL(smallPhoto.full);$('#hero-small').alt=small.name;
   render();const id=new URL(location.href).searchParams.get('dog');if(id){const d=dogs.find(d=>d.id===id);if(d)openDog(d,null);}
  }).catch(error=>{$('#load-error').hidden=false;$('#result-count').textContent='Каталог недоступен';console.error('Catalog loading failed',error);});
 })();

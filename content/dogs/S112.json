@@ -1,0 +1,24 @@
+{
+  "id": "S112",
+  "name": "Слойка",
+  "description": "Рыжевато-серая, тёмная спина, небольшие полувисячие уши, светлая нижняя часть морды. Бирка: оранжево-красная; номер не читается.",
+  "tag_number": "",
+  "tag_colors": [
+    "оранжевая"
+  ],
+  "status": "unknown",
+  "photos": [
+    "/media/S112/p02088.webp",
+    "/media/S112/p03121.webp",
+    "/media/S112/p05255.webp",
+    "/media/S112/p02079.webp",
+    "/media/S112/p02081.webp",
+    "/media/S112/p02091.webp",
+    "/media/S112/p02092.webp",
+    "/media/S112/p05254.webp",
+    "/media/S112/p03115.webp",
+    "/media/S112/p03117.webp",
+    "/media/S112/p03122.webp",
+    "/media/S112/p03127.webp"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "S63",
+  "name": "Собака S63",
+  "description": "Чёрная со светлым подпалом, светлые ноги, стоячие уши. Бирка: оранжево-красная; номер не читается.",
+  "tag_number": "",
+  "tag_colors": [
+    "оранжевая"
+  ],
+  "status": "unknown",
+  "photos": [
+    "/media/S63/p00627.webp",
+    "/media/S63/p00621.webp",
+    "/media/S63/p00622.webp",
+    "/media/S63/p00623.webp",
+    "/media/S63/p00624.webp",
+    "/media/S63/p00625.webp",
+    "/media/S63/p00626.webp",
+    "/media/S63/p00628.webp",
+    "/media/S63/p00629.webp",
+    "/media/S63/p00630.webp",
+    "/media/S63/p00631.webp",
+    "/media/S63/p00632.webp",
+    "/media/S63/p00633.webp"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "id": "S223",
+  "name": "Лучик",
+  "description": "Светлая рыже-кремовая пушистая, широкая морда, небольшие сложенные уши с тёмными кончиками, густой воротник. Бирка: синяя; №2916.",
+  "tag_number": "2916",
+  "tag_colors": [
+    "синяя"
+  ],
+  "status": "unknown",
+  "photos": [
+    "/media/S223/p05153.webp",
+    "/media/S223/p03133.webp",
+    "/media/S223/p03130.webp",
+    "/media/S223/p03132.webp",
+    "/media/S223/p03134.webp",
+    "/media/S223/p03141.webp",
+    "/media/S223/p05149.webp",
+    "/media/S223/p05150.webp",
+    "/media/S223/p05154.webp"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "id": "S212",
+  "name": "Собака S212",
+  "description": "Чёрная спина, рыжеватая голова и светлые ноги, густая шерсть, небольшие полувисячие уши. Бирка: синяя; №3347.",
+  "tag_number": "3347",
+  "tag_colors": [
+    "синяя"
+  ],
+  "status": "unknown",
+  "photos": [
+    "/media/S212/p06143.webp",
+    "/media/S212/p06018.webp",
+    "/media/S212/p06141.webp",
+    "/media/S212/p06142.webp",
+    "/media/S212/p06144.webp",
+    "/media/S212/p06015.webp",
+    "/media/S212/p06016.webp",
+    "/media/S212/p06017.webp",
+    "/media/S212/p06019.webp",
+    "/media/S212/p06020.webp"
+  ]
+}

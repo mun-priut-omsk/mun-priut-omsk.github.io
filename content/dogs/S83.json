@@ -1,0 +1,27 @@
+{
+  "id": "S83",
+  "name": "Собака S83",
+  "description": "Чёрная спина, рыжие ноги и голова, седая морда. Бирка: оранжево-красная; номер не читается.",
+  "tag_number": "",
+  "tag_colors": [
+    "оранжевая"
+  ],
+  "status": "unknown",
+  "photos": [
+    "/media/S83/p01879.webp",
+    "/media/S83/p06781.webp",
+    "/media/S83/p01026.webp",
+    "/media/S83/p01024.webp",
+    "/media/S83/p01025.webp",
+    "/media/S83/p01028.webp",
+    "/media/S83/p01029.webp",
+    "/media/S83/p01873.webp",
+    "/media/S83/p01875.webp",
+    "/media/S83/p01876.webp",
+    "/media/S83/p01881.webp",
+    "/media/S83/p01885.webp",
+    "/media/S83/p06779.webp",
+    "/media/S83/p06780.webp",
+    "/media/S83/p06782.webp"
+  ]
+}

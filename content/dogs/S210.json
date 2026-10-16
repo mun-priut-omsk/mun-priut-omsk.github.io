@@ -1,0 +1,25 @@
+{
+  "id": "S210",
+  "name": "Собака S210",
+  "description": "Белая с рыжеватыми пятнами на голове и спине, тёмный нос, полустоячие уши, светлый хвост. Бирка: синяя; номер не читается.",
+  "tag_number": "",
+  "tag_colors": [
+    "синяя"
+  ],
+  "status": "unknown",
+  "photos": [
+    "/media/S210/p06135.webp",
+    "/media/S210/p06866.webp",
+    "/media/S210/p06858.webp",
+    "/media/S210/p06132.webp",
+    "/media/S210/p06133.webp",
+    "/media/S210/p06134.webp",
+    "/media/S210/p06136.webp",
+    "/media/S210/p06137.webp",
+    "/media/S210/p06534.webp",
+    "/media/S210/p06535.webp",
+    "/media/S210/p06536.webp",
+    "/media/S210/p06608.webp",
+    "/media/S210/p06609.webp"
+  ]
+}

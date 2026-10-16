@@ -1,0 +1,22 @@
+{
+  "id": "S198",
+  "name": "Лапушка",
+  "description": "Короткошёрстная, светло-рыжая голова и ноги, тёмный чепрак, небольшие сложенные уши, светлая нижняя часть морды. Бирка: оранжево-красная; №3685.",
+  "tag_number": "3685",
+  "tag_colors": [
+    "оранжевая"
+  ],
+  "status": "unknown",
+  "photos": [
+    "/media/S198/p05913.webp",
+    "/media/S198/p05955.webp",
+    "/media/S198/p05861.webp",
+    "/media/S198/p05887.webp",
+    "/media/S198/p05888.webp",
+    "/media/S198/p05889.webp",
+    "/media/S198/p05890.webp",
+    "/media/S198/p05891.webp",
+    "/media/S198/p05860.webp",
+    "/media/S198/p05862.webp"
+  ]
+}

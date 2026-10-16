@@ -1,0 +1,25 @@
+{
+  "id": "S53",
+  "name": "Собака S53",
+  "description": "Чёрная с рыжим подпалом на морде и ногах, светлым подбородком, крупными полустоячими ушами, короткой шерстью. Бирка: синяя; №2400.",
+  "tag_number": "2400",
+  "tag_colors": [
+    "синяя"
+  ],
+  "status": "unknown",
+  "photos": [
+    "/media/S53/p00495.webp",
+    "/media/S53/p00489.webp",
+    "/media/S53/p00490.webp",
+    "/media/S53/p00491.webp",
+    "/media/S53/p00492.webp",
+    "/media/S53/p00493.webp",
+    "/media/S53/p00494.webp",
+    "/media/S53/p00496.webp",
+    "/media/S53/p00497.webp",
+    "/media/S53/p00498.webp",
+    "/media/S53/p00499.webp",
+    "/media/S53/p00500.webp",
+    "/media/S53/p00501.webp"
+  ]
+}

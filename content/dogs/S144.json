@@ -1,0 +1,26 @@
+{
+  "id": "S144",
+  "name": "Собака S144",
+  "description": "Длинношёрстная овчарочного типа, рыжая голова и ноги, чёрная спина и маска, стоячие уши. Бирка: оранжево-красная; №2889.",
+  "tag_number": "2889",
+  "tag_colors": [
+    "оранжевая"
+  ],
+  "status": "unknown",
+  "photos": [
+    "/media/S144/p04960.webp",
+    "/media/S144/p06146.webp",
+    "/media/S144/p03169.webp",
+    "/media/S144/p03150.webp",
+    "/media/S144/p03151.webp",
+    "/media/S144/p03152.webp",
+    "/media/S144/p03156.webp",
+    "/media/S144/p03157.webp",
+    "/media/S144/p03170.webp",
+    "/media/S144/p03172.webp",
+    "/media/S144/p03173.webp",
+    "/media/S144/p03174.webp",
+    "/media/S144/p04958.webp",
+    "/media/S144/p06145.webp"
+  ]
+}

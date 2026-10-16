@@ -1,0 +1,26 @@
+{
+  "id": "S213",
+  "name": "Рина",
+  "description": "Чёрная спина, рыжие ноги и морда, широкая голова, небольшие висячие уши. Бирка: жёлтая; номер не читается.",
+  "tag_number": "",
+  "tag_colors": [
+    "жёлтая"
+  ],
+  "status": "unknown",
+  "photos": [
+    "/media/S213/p06011.webp",
+    "/media/S213/p05131.webp",
+    "/media/S213/p05962.webp",
+    "/media/S213/p05119.webp",
+    "/media/S213/p05120.webp",
+    "/media/S213/p05121.webp",
+    "/media/S213/p05122.webp",
+    "/media/S213/p05123.webp",
+    "/media/S213/p05960.webp",
+    "/media/S213/p05961.webp",
+    "/media/S213/p05963.webp",
+    "/media/S213/p06010.webp",
+    "/media/S213/p06012.webp",
+    "/media/S213/p05127.webp"
+  ]
+}

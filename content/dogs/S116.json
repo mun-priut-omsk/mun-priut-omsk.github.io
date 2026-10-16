@@ -1,0 +1,28 @@
+{
+  "id": "S116",
+  "name": "Пирожок",
+  "description": "Тёмная спина, рыжевато-серая голова, полустоячие уши, светлый подбородок. Бирка: жёлтая; номер не читается.",
+  "tag_number": "",
+  "tag_colors": [
+    "жёлтая"
+  ],
+  "status": "unknown",
+  "photos": [
+    "/media/S116/p02823.webp",
+    "/media/S116/p06922.webp",
+    "/media/S116/p06921.webp",
+    "/media/S116/p02177.webp",
+    "/media/S116/p02178.webp",
+    "/media/S116/p02189.webp",
+    "/media/S116/p02192.webp",
+    "/media/S116/p02821.webp",
+    "/media/S116/p02822.webp",
+    "/media/S116/p02827.webp",
+    "/media/S116/p06610.webp",
+    "/media/S116/p06611.webp",
+    "/media/S116/p06553.webp",
+    "/media/S116/p06766.webp",
+    "/media/S116/p06767.webp",
+    "/media/S116/p06330.webp"
+  ]
+}

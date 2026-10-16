@@ -1,0 +1,32 @@
+{
+  "id": "S79",
+  "name": "Собака S79",
+  "description": "Бело-серо-чёрная, белая полоса на лбу, тёмные пятна вокруг глаз. Бирка: оранжево-красная; номер не читается.",
+  "tag_number": "",
+  "tag_colors": [
+    "оранжевая"
+  ],
+  "status": "unknown",
+  "photos": [
+    "/media/S79/p01895.webp",
+    "/media/S79/p06833.webp",
+    "/media/S79/p06777.webp",
+    "/media/S79/p00943.webp",
+    "/media/S79/p00944.webp",
+    "/media/S79/p00945.webp",
+    "/media/S79/p01891.webp",
+    "/media/S79/p01892.webp",
+    "/media/S79/p01893.webp",
+    "/media/S79/p01894.webp",
+    "/media/S79/p01896.webp",
+    "/media/S79/p01898.webp",
+    "/media/S79/p01899.webp",
+    "/media/S79/p01900.webp",
+    "/media/S79/p05408.webp",
+    "/media/S79/p06621.webp",
+    "/media/S79/p06775.webp",
+    "/media/S79/p06776.webp",
+    "/media/S79/p06778.webp",
+    "/media/S79/p06832.webp"
+  ]
+}

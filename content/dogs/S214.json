@@ -1,0 +1,24 @@
+{
+  "id": "S214",
+  "name": "Каспер",
+  "description": "Светло-рыжая короткошёрстная, висячие уши, тёмные отметины вокруг глаз, яркий оранжевый ошейник. Бирка: синяя; №1230.",
+  "tag_number": "1230",
+  "tag_colors": [
+    "синяя"
+  ],
+  "status": "unknown",
+  "photos": [
+    "/media/S214/p06084.webp",
+    "/media/S214/p05161.webp",
+    "/media/S214/p05155.webp",
+    "/media/S214/p05158.webp",
+    "/media/S214/p05163.webp",
+    "/media/S214/p06080.webp",
+    "/media/S214/p06081.webp",
+    "/media/S214/p06082.webp",
+    "/media/S214/p06083.webp",
+    "/media/S214/p06085.webp",
+    "/media/S214/p06086.webp",
+    "/media/S214/p06087.webp"
+  ]
+}

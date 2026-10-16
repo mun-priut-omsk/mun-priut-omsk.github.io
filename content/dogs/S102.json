@@ -1,0 +1,18 @@
+{
+  "id": "S102",
+  "name": "Собака S102",
+  "description": "Невысокая тёмная лохматая, светлая седая морда, висячие уши. Бирка на просмотренных фотографиях не различима; цвет и номер определить не удалось.",
+  "tag_number": "",
+  "tag_colors": [],
+  "status": "unknown",
+  "photos": [
+    "/media/S102/p01759.webp",
+    "/media/S102/p01755.webp",
+    "/media/S102/p01756.webp",
+    "/media/S102/p01757.webp",
+    "/media/S102/p01758.webp",
+    "/media/S102/p01760.webp",
+    "/media/S102/p01761.webp",
+    "/media/S102/p01762.webp"
+  ]
+}

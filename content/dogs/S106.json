@@ -1,0 +1,31 @@
+{
+  "id": "S106",
+  "name": "Батон",
+  "description": "Тёмная длинношёрстная с рыжими лапами и подпалом на морде, пушистый хвост. Бирка: жёлтая; номер не читается.",
+  "tag_number": "",
+  "tag_colors": [
+    "жёлтая"
+  ],
+  "status": "unknown",
+  "photos": [
+    "/media/S106/p01864.webp",
+    "/media/S106/p06835.webp",
+    "/media/S106/p06773.webp",
+    "/media/S106/p01855.webp",
+    "/media/S106/p01860.webp",
+    "/media/S106/p01865.webp",
+    "/media/S106/p01866.webp",
+    "/media/S106/p04490.webp",
+    "/media/S106/p04491.webp",
+    "/media/S106/p04492.webp",
+    "/media/S106/p06001.webp",
+    "/media/S106/p06002.webp",
+    "/media/S106/p06419.webp",
+    "/media/S106/p06420.webp",
+    "/media/S106/p06620.webp",
+    "/media/S106/p06771.webp",
+    "/media/S106/p06772.webp",
+    "/media/S106/p06774.webp",
+    "/media/S106/p06834.webp"
+  ]
+}

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Открытый каталог собак: клички, приметы, номера бирок и фотографии.">
+  <meta name="theme-color" content="#25483b"><title>Наши собаки — открытый каталог</title>
+  <link rel="icon" href="paw.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css">
+  <script defer src="app.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#catalog">Перейти к каталогу</a>
+<header class="site-header wrap"><a class="brand" href="./"><img src="paw.svg" alt="" width="38" height="38"><span>Наши собаки<small>Открытый каталог</small></span></a><nav aria-label="Основная навигация"><a href="#catalog">Каталог</a><a href="#about">О каталоге</a><a class="edit-link" href="admin/">Редактировать <span aria-hidden="true">↗</span></a></nav></header>
+<main>
+<section class="hero wrap" aria-labelledby="hero-title">
+  <div class="hero-copy"><p class="eyebrow"><span class="live-dot"></span> Знакомимся. Узнаём. Не теряем.</p><h1 id="hero-title">У каждого —<br>своя история<span>.</span></h1><p class="hero-description">Клички, особые приметы и фотографии наших собак. Найдите знакомую мордочку или познакомьтесь с кем-то впервые.</p><a class="primary-link" href="#catalog">Посмотреть собак <span aria-hidden="true">↘</span></a><div class="hero-stats"><p><strong id="total-cards">—</strong><span>карточек собак</span></p><p><strong id="total-photos">—</strong><span>фотографий</span></p><span class="stat-note">У каждой собаки<br>есть своё место здесь.</span></div></div>
+  <div class="hero-art"><div class="hero-photo main-photo"><img id="hero-main" alt="" fetchpriority="high"><span class="photo-label"><span class="label-dot"></span><span id="hero-main-name">Знакомимся</span></span></div><div class="hero-photo small-photo"><img id="hero-small" alt=""><span id="hero-small-name" class="small-label">Наши собаки</span></div><span class="hand-note">такие разные,<br>такие свои <span aria-hidden="true">↗</span></span><span class="hero-spark" aria-hidden="true">✳</span></div>
+</section>
+<section class="catalog-section wrap" id="catalog" aria-labelledby="catalog-title">
+ <div class="section-heading"><div><p class="eyebrow">Все рядом</p><h2 id="catalog-title">Знакомьтесь, наши собаки</h2></div><p>Нажмите на фотографию,<br>чтобы узнать больше.</p></div>
+ <div class="catalog-controls"><label class="search-box"><span class="search-icon" aria-hidden="true">⌕</span><span class="sr-only">Поиск по кличке, номеру бирки или приметам</span><input id="search" type="search" placeholder="Кличка, номер бирки или примета…" autocomplete="off"><kbd aria-hidden="true">/</kbd></label><label class="sort-label"><span class="sr-only">Порядок карточек</span><select id="sort"><option value="name">По кличке</option><option value="id">По номеру карточки</option><option value="newest">Сначала новые</option></select></label></div>
+ <div class="filter-row"><div class="filters" role="group" aria-label="Фильтр собак"><button type="button" class="filter active" data-filter="all" aria-pressed="true">Все собаки</button><button type="button" class="filter" data-filter="named" aria-pressed="false">С кличками</button><button type="button" class="filter" data-filter="unnamed" aria-pressed="false">Без кличек</button><button type="button" class="filter" data-filter="home" aria-pressed="false">Уже дома <span aria-hidden="true">♡</span></button></div><p id="result-count" role="status" aria-live="polite">Загружаем каталог…</p></div>
+ <p id="practice-banner" class="notice" hidden>Показаны ваши пробные изменения. Они видны только в этом браузере. <a href="practice.html">Открыть тренировочную панель</a></p>
+ <div class="dog-grid" id="dog-grid"></div>
+ <div class="empty-state" id="empty-state" hidden><span aria-hidden="true">⌕</span><h3>Пока никого не нашли</h3><p>Попробуйте другую кличку, номер бирки или примету.</p><button id="reset-search" class="secondary-button" type="button">Показать всех собак</button></div>
+ <button class="load-more secondary-button" id="load-more" hidden>Показать ещё</button><p id="load-error" class="notice" hidden>Не удалось загрузить каталог. Обновите страницу и проверьте соединение.</p>
+</section>
+<section class="about wrap" id="about"><div><p class="eyebrow">С заботой о каждом</p><h2>Один каталог.<br>Много знакомых историй.</h2></div><div><p>Здесь собраны фотографии и приметы собак. Поиск помогает найти карточку по кличке, номеру бирки или описанию внешности.</p><p>Отметка «Дома» означает, что в базе есть информация о переезде собаки. Если отметки нет, её нынешний статус может быть не указан.</p><a id="practice-link" href="practice.html" hidden>Попробовать редактирование →</a></div></section>
+</main>
+<footer class="footer wrap"><a class="brand" href="./"><img src="paw.svg" alt="" width="30" height="30"><span>Наши собаки</span></a><p>Фотографии, имена и важные приметы.</p><a href="admin/">Вход для редактора ↗</a></footer>
+<dialog id="dog-dialog" class="dog-dialog" aria-labelledby="dog-title"><button class="dialog-close" id="close-dialog" aria-label="Закрыть карточку">×</button><div class="dialog-layout"><div class="gallery"><div class="gallery-stage"><img id="detail-photo" alt=""><button id="previous-photo" class="photo-arrow previous" aria-label="Предыдущее фото">‹</button><button id="next-photo" class="photo-arrow next" aria-label="Следующее фото">›</button><span id="photo-counter" class="photo-counter"></span></div><div id="thumbnails" class="thumbnails" aria-label="Фотографии собаки"></div></div><div class="dog-info"><p id="dog-id" class="eyebrow"></p><h2 id="dog-title"></h2><div id="detail-tags" class="detail-tags"></div><p id="detail-description" class="detail-description"></p><div class="detail-actions"><button type="button" id="copy-link" class="primary-button">Скопировать ссылку</button><a id="download-photo" class="secondary-link" download>Скачать фото ↗</a></div><p class="detail-help">Стрелки на клавиатуре переключают фото.<br>Клавиша Esc закрывает карточку.</p><p id="copy-status" role="status" aria-live="polite"></p></div></div></dialog>
+</body></html>

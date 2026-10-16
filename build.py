@@ -3,7 +3,7 @@ from pathlib import Path
 from PIL import Image,ImageOps
 ROOT=Path(__file__).resolve().parent
 def make_config(settings):
- fields=[dict(label='Номер карточки',name='id',widget='hidden',default=''),dict(label='Кличка',name='name',widget='string',hint='Если кличка неизвестна, напишите «Собака без клички».'),dict(label='Описание внешности',name='description',widget='text',required=False),dict(label='Номер бирки',name='tag_number',widget='string',required=False),dict(label='Цвет бирки',name='tag_colors',widget='select',multiple=True,required=False,options=['синяя','красная','оранжевая','жёлтая','зелёная','бежевая','белая']),dict(label='Статус',name='status',widget='select',default='unknown',options=[dict(label='Не указан',value='unknown'),dict(label='В приюте',value='shelter'),dict(label='Дома',value='home')]),dict(label='Фотографии',name='photos',widget='list',min=1,field=dict(label='Фото',name='image',widget='image',choose_url=False),hint='Первое фото — обложка. Порядок можно менять перетаскиванием.')]
+ fields=[dict(label='Номер карточки',name='id',widget='hidden',default=''),dict(label='Кличка',name='name',widget='string',hint='Если кличка неизвестна, напишите «Собака без клички».'),dict(label='Описание внешности',name='description',widget='text',required=False),dict(label='Номер бирки',name='tag_number',widget='string',required=False),dict(label='Цвет бирки',name='tag_colors',widget='select',multiple=True,required=False,options=['синяя','голубая','красная','оранжевая','светло-оранжевая','жёлтая','зелёная','бежевая','белая']),dict(label='Статус',name='status',widget='select',default='unknown',options=[dict(label='Не указан',value='unknown'),dict(label='В приюте',value='shelter'),dict(label='Дома',value='home')]),dict(label='Фотографии',name='photos',widget='list',min=1,field=dict(label='Фото',name='image',widget='image',choose_url=False),hint='Первое фото — обложка. Порядок можно менять перетаскиванием.')]
  backend=dict(name='github',repo=(settings['github_owner'] or 'YOUR_USERNAME')+'/'+settings['github_repo'],branch='main')
  if settings['auth_site']:backend['site_domain']=settings['auth_site']
  return dict(backend=backend,locale='ru',media_folder='static/media',public_folder='/media',publish_mode='simple',site_url=settings['site_url'],display_url=settings['site_url'],show_preview_links=False,collections=[dict(name='dogs',label='Собаки',label_singular='Собака',folder='content/dogs',create=True,delete=True,extension='json',format='json',identifier_field='name',slug='{{year}}-{{month}}-{{day}}-{{hour}}-{{minute}}-{{second}}-{{slug}}',summary='{{name}} · бирка {{tag_number}}',sortable_fields=['name','tag_number'],editor=dict(preview=False),fields=fields)])
@@ -30,7 +30,7 @@ def main(production=False,sample=False):
   for path in dog['photos']:
    relative=Path(path[1:] if path.startswith('/media/') else path);assert not relative.is_absolute() and '..' not in relative.parts
    source=ROOT/'static'/relative;assert source.is_file(),f'Missing photo {path}'
-   if not re.fullmatch(r'media/S[0-9]+/p[0-9]+\.webp',relative.as_posix()):
+   if not (ROOT/'static'/relative.as_posix().replace('media/','thumbs/',1)).is_file():
     key='u'+hashlib.sha256(source.read_bytes()).hexdigest()[:20];full=f'media/uploads-ready/{key}.webp';thumb=f'thumbs/uploads-ready/{key}.webp';original=ImageOps.exif_transpose(Image.open(source)).convert('RGB')
     for target,side,quality in [(full,1800,84),(thumb,520,77)]:
      dest=output/target;dest.parent.mkdir(parents=True,exist_ok=True)

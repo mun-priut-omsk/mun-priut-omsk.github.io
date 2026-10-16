@@ -1,5 +1,5 @@
 (()=>{'use strict';
- const $=s=>document.querySelector(s),base=new URL('./',location.href),colors={'красная':'#bc5547','белая':'#e5e4db','синяя':'#68a4bc','оранжевая':'#d77b52','жёлтая':'#d4b458','зелёная':'#75a078','бежевая':'#b6a588'},practiceKey='dog-catalog-practice-v1';
+ const $=s=>document.querySelector(s),base=new URL('./',location.href),colors={'голубая':'#85b9d2','светло-оранжевая':'#e8af83','красная':'#bc5547','белая':'#e5e4db','синяя':'#68a4bc','оранжевая':'#d77b52','жёлтая':'#d4b458','зелёная':'#75a078','бежевая':'#b6a588'},practiceKey='dog-catalog-practice-v1';
  const node=(tag,cls,text)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n;};
  const unnamed=d=>/^Собака\b|^Без клички/i.test(d.name),norm=s=>String(s).toLowerCase().replaceAll('ё','е');
  let dogs=[],filter='all',shown=24,current=null,index=0,trigger=null,practiceEnabled=false;

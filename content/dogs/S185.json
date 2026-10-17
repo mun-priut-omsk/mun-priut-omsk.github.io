@@ -1,9 +1,11 @@
 {
   "id": "S185",
   "name": "Хью",
-  "description": "Рыже-золотистая длинношёрстная, светлая грудь и ноги, висячие уши. Бирка на просмотренных фотографиях не различима; цвет и номер определить не удалось.",
-  "tag_number": "",
-  "tag_colors": [],
+  "description": "Рыжая длинношёрстная собака со светлыми грудью и нижней частью морды, густой гривой и пушистым загнутым хвостом. Янтарные глаза, коричневато-розовый нос, висячие уши. Голубая бирка №4089.",
+  "tag_number": "4089",
+  "tag_colors": [
+    "голубая"
+  ],
   "status": "unknown",
   "photos": [
     "/media/S185/p06100.webp",
@@ -15,6 +17,10 @@
     "/media/S185/p06099.webp",
     "/media/S185/p06101.webp",
     "/media/S185/p06102.webp",
-    "/media/S185/p06103.webp"
+    "/media/S185/p06103.webp",
+    "/media/library/2348f32368409024b8fd3e1b6b6e6ce739a7c69951c249154db26cc909880ecc.webp",
+    "/media/library/56f495599f90039d5db79ee5b6cf05fb488f577e821a53d33f5fed97c0929c71.webp",
+    "/media/library/41f80f4338f70ac3df0067612cca9d3a37fb5b4ec390e21fee7defbf2f6ab574.webp",
+    "/media/library/0c165d7e9a3f530df4ec9d191c89c26a8bce34d1399457eb36f707604c2c0ac0.webp"
   ]
 }

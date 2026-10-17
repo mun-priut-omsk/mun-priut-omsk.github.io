@@ -1,0 +1,22 @@
+{
+  "id": "S418",
+  "name": "Миша",
+  "description": "Чёрная длинношёрстная собака с густой шерстью, белым пятном на груди и светлыми пальцами передних лап. Морда с заметной сединой, карие глаза, чёрный нос, треугольные полустоячие уши и пушистый хвост. Бирка красная; номер на новых фотографиях закрыт шерстью и не читается.",
+  "tag_number": "",
+  "tag_colors": [
+    "красная"
+  ],
+  "status": "unknown",
+  "photos": [
+    "/media/library/da9bc5c89f3f9366604d69240243d2a136c1ead7a5fef91a838ec76b1011c9f5.webp",
+    "/media/library/8e6b269c112e0d4eafb659bc94aaa854e61de67f0fcd84035ffbd8400023fb68.webp",
+    "/media/library/7b324c89ca75c408bcc1fa8f514fb01f2696632d2f29e1d1fe75b4573c8a920d.webp",
+    "/media/library/a10e24ab6d430939d5b48dc0fafae69666b08179b455587115c633d49b7288f7.webp",
+    "/media/library/140bb3c816029bfa83c15eb617336adea1caaf9dededbde387a819e2569776c2.webp",
+    "/media/library/9d2893c4891c0314b6c2341d6313e588dc341ec1dd5c2fc64cc2eceeb68e0c52.webp",
+    "/media/library/efdd353c07db269575a832d76f2f4cfe84ad40118389ead3885963243ec82243.webp",
+    "/media/library/6d512beb6cfb3bc6a86cac87c6087c15ead7c2afc9d05f676624ed6585f4a77f.webp",
+    "/media/library/ea1bcb35168ad34dd6060b64a0d5aac687bca5e9ae3e9188bb70e7645982a3d5.webp",
+    "/media/library/9e10879241496f5da5744bd441da18ca9f29d6b3e27d321667d9706321a121d2.webp"
+  ]
+}

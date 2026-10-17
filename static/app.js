@@ -4,7 +4,7 @@
  const unnamed=d=>!String(d.name||'').trim()||/^(?:Собака|Серия)(?:\s|$)|^Без\s+клички(?:\s|$)/iu.test(String(d.name).trim()),norm=s=>String(s).toLowerCase().replaceAll('ё','е');
  const nameOrder=new Intl.Collator('ru',{sensitivity:'base',numeric:true});
  const compareByName=(a,b)=>Number(unnamed(a))-Number(unnamed(b))||nameOrder.compare(String(a.name).trim(),String(b.name).trim())||nameOrder.compare(a.id,b.id);
- let dogs=[],filter='all',shown=24,current=null,index=0,trigger=null,practiceEnabled=false;
+ let dogs=[],filter='named',shown=24,current=null,index=0,trigger=null,practiceEnabled=false;
  function imageURL(path){return new URL(path,base).href;}
  function card(d){
   const article=node('article','dog-card'),button=node('button','card-open');button.type='button';button.setAttribute('aria-label','Открыть карточку: '+d.name);
@@ -17,7 +17,7 @@
  }
  function filtered(){
   const q=norm($('#search').value.trim()),sort=$('#sort').value;
-  const list=dogs.filter(d=>(filter==='all'||filter==='home'&&d.status==='home'||filter==='named'&&!unnamed(d)||filter==='unnamed'&&unnamed(d))&&norm([d.id,d.name,d.description,d.tag_number,...d.tag_colors].join(' ')).includes(q));
+  const list=dogs.filter(d=>(filter==='all'||filter==='home'&&d.status==='home'||filter==='named'&&!unnamed(d)&&d.status!=='home'||filter==='unnamed'&&unnamed(d))&&norm([d.id,d.name,d.description,d.tag_number,...d.tag_colors].join(' ')).includes(q));
   return list.sort((a,b)=>sort==='name'?compareByName(a,b):sort==='newest'?b.id.localeCompare(a.id,'ru',{numeric:true}):a.id.localeCompare(b.id,'ru',{numeric:true}));
  }
  function render(){const list=filtered(),grid=$('#dog-grid');grid.replaceChildren(...list.slice(0,shown).map(card));$('#result-count').textContent='Найдено: '+list.length;$('#empty-state').hidden=!!list.length;$('#load-more').hidden=list.length<=shown;}

@@ -15,9 +15,15 @@
   const tags=node('div','card-tags'),dot=node('span','tag-dot');dot.style.background=colors[d.tag_colors[0]]||'#c5cbbd';tags.append(dot,node('span','',d.tag_number?'Бирка '+d.tag_number:d.tag_colors.length?'Бирка: '+d.tag_colors.map(c=>c==='оранжевая'?'красная':c).join(', '):'Бирка не определена'));
   body.append(tags);button.append(photo,body);button.addEventListener('click',()=>openDog(d,button));article.append(button);return article;
  }
+ function matchesSearch(d,query){
+  const terms=norm(query).match(/[\p{L}\p{N}]+/gu)||[];
+  if(!terms.length)return true;
+  const words=norm([d.id,d.name,d.description,d.tag_number,...d.tag_colors].join(' ')).match(/[\p{L}\p{N}]+/gu)||[];
+  return terms.every(term=>words.some(word=>word.startsWith(term)));
+ }
  function filtered(){
   const q=norm($('#search').value.trim()),sort=$('#sort').value;
-  const list=dogs.filter(d=>(filter==='all'||filter==='home'&&d.status==='home'||filter==='named'&&!unnamed(d)&&d.status!=='home'||filter==='unnamed'&&unnamed(d))&&norm([d.id,d.name,d.description,d.tag_number,...d.tag_colors].join(' ')).includes(q));
+  const list=dogs.filter(d=>(filter==='all'||filter==='home'&&d.status==='home'||filter==='named'&&!unnamed(d)&&d.status!=='home'||filter==='unnamed'&&unnamed(d))&&matchesSearch(d,q));
   return list.sort((a,b)=>sort==='name'?compareByName(a,b):sort==='newest'?b.id.localeCompare(a.id,'ru',{numeric:true}):a.id.localeCompare(b.id,'ru',{numeric:true}));
  }
  function render(){const list=filtered(),grid=$('#dog-grid');grid.replaceChildren(...list.slice(0,shown).map(card));$('#result-count').textContent='Найдено: '+list.length;$('#empty-state').hidden=!!list.length;$('#load-more').hidden=list.length<=shown;}

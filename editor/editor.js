@@ -31,12 +31,18 @@ function reorderPhoto(asset,targetIndex){
  $('#photo-status').textContent=targetIndex===0?'Обложка выбрана. Нажмите «Сохранить карточку».':'Порядок изменён. Нажмите «Сохранить карточку».';
 }
 function clearDrag(){draggedPhoto=null;document.querySelectorAll('.tile.dragging,.tile.drop-target').forEach(tile=>tile.classList.remove('dragging','drop-target'));}
+function updatePhotoSelection(){
+ const total=current?.photos.length||0;
+ $('#select-all-photos').disabled=!total||selected.size===total;
+ $('#clear-photo-selection').disabled=!selected.size;
+ $('#photo-selection-count').textContent=total?'Выбрано: '+selected.size+' из '+total:'Фотографий пока нет';
+}
 function renderPhotos(){
  const grid=$('#photos');grid.replaceChildren();
  current.photos.forEach((asset,index)=>{
   const tile=element('div',undefined,'tile'+(selected.has(asset)?' selected':'')+(index===0?' cover-tile':'')),top=element('div',undefined,'tile-top'),label=element('label'),box=document.createElement('input');
   tile.draggable=true;tile.title='Перетащите фото, чтобы изменить порядок';
-  box.type='checkbox';box.checked=selected.has(asset);box.addEventListener('change',()=>{box.checked?selected.add(asset):selected.delete(asset);tile.classList.toggle('selected',box.checked);});
+  box.type='checkbox';box.checked=selected.has(asset);box.addEventListener('change',()=>{box.checked?selected.add(asset):selected.delete(asset);tile.classList.toggle('selected',box.checked);updatePhotoSelection();});
   label.append(box,document.createTextNode('Фото '+(index+1)));top.append(label);
   if(index===0)top.append(element('span','Обложка','cover-badge'));else top.append(element('span','⠿','drag-handle'));
   const img=document.createElement('img');img.src=asset.replace('/media/','/thumbs/');img.alt=current.name+' — фото '+(index+1);img.loading='lazy';img.draggable=false;img.onerror=()=>{img.onerror=null;img.src=asset;};
@@ -52,7 +58,10 @@ function renderPhotos(){
   tile.addEventListener('drop',event=>{if(!draggedPhoto)return;event.preventDefault();const source=draggedPhoto;clearDrag();reorderPhoto(source,current.photos.indexOf(asset));});
   tile.addEventListener('dragend',clearDrag);tile.append(top,img,cover,tools);grid.append(tile);
  });
+ updatePhotoSelection();
 }
+$('#select-all-photos').addEventListener('click',()=>{if(!current)return;selected=new Set(current.photos);renderPhotos();});
+$('#clear-photo-selection').addEventListener('click',()=>{selected.clear();renderPhotos();});
 async function save(){if(busy)throw Error('Дождитесь загрузки фотографий.');if(!current)throw Error('Выберите карточку.');if(!$('#name').value.trim())throw Error('Введите кличку.');const payload={...current,name:$('#name').value.trim(),tag_number:$('#tag').value.trim(),status:$('#status').value,description:$('#description').value.trim(),tag_colors:[...document.querySelectorAll('[name="color"]:checked')].map(n=>n.value)};const result=await api('/api/save',payload);dirty=false;await refresh(result.id);message(result.notice||'Карточка сохранена. Для публикации нажмите Push origin в GitHub Desktop.');return result.id;}
 $('#form').addEventListener('input',e=>{if(e.target.matches('#name,#tag,#status,#description,[name="color"]'))changed();});$('#form').addEventListener('submit',async e=>{e.preventDefault();try{await save();}catch(error){message(error.message);}});
 $('#search').addEventListener('input',options);$('#picker').addEventListener('change',e=>{if(busy){e.target.value=current?.id||'';return;}if(!discard()){e.target.value=current?.id||'';return;}choose(all.find(d=>d.id===e.target.value));});$('#new-card').addEventListener('click',()=>{if(busy)return;if(discard()){choose(null);$('#name').focus();}});

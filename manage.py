@@ -47,7 +47,7 @@ def save_card(payload):
   if not isinstance(colors,list) or any(c not in ['синяя','голубая','красная','оранжевая','светло-оранжевая','жёлтая','зелёная','бежевая','белая'] for c in colors):raise ValueError('Неверный цвет бирки.')
   identifier=identifier or 'N'+uuid.uuid4().hex[:12]
   card={k:v for k,v in (old or {}).items() if not k.startswith('_')}
-  card.update(id=identifier,name=name,photos=photos,status=status,tag_colors=colors,tag_number=str(payload.get('tag_number','')).strip(),description=str(payload.get('description','')).strip())
+  card.update(id=identifier,name=name,photos=photos,status=status,tag_colors=colors,tag_number=str(payload.get('tag_number','')).strip(),description=str(payload.get('description',card.get('description',''))).strip(),character_description=str(payload.get('character_description',card.get('character_description',''))).strip())
   path=ROOT/'content/dogs'/(old['_file'] if old else identifier+'.json');store.atomic_json(path,card)
   paths=[path]
   for asset in photos:
@@ -118,7 +118,7 @@ class Handler(BaseHTTPRequestHandler):
    if path.startswith('/api/'):
     if not self.authorized():return self.respond({'error':'Обновите страницу редактора.'},403)
     if path=='/api/state':
-     index=store.load_index();return self.respond({'cards':cards(),'originals':len(index['assets']),'site_url':json.loads((ROOT/'settings.json').read_text(encoding='utf-8'))['site_url']})
+     index=store.load_index();return self.respond({'description_fields_version':2,'cards':cards(),'originals':len(index['assets']),'site_url':json.loads((ROOT/'settings.json').read_text(encoding='utf-8'))['site_url']})
     if path.startswith('/api/job/'):return self.respond(JOBS.get(path.rsplit('/',1)[-1],{'state':'error','message':'Задание не найдено.'}))
     return self.respond({'error':'Неизвестная команда.'},404)
    if path.startswith('/download/'):

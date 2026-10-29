@@ -18,7 +18,7 @@
  function matchesSearch(d,query){
   const terms=norm(query).match(/[\p{L}\p{N}]+/gu)||[];
   if(!terms.length)return true;
-  const words=norm([d.id,d.name,d.description,d.tag_number,...d.tag_colors].join(' ')).match(/[\p{L}\p{N}]+/gu)||[];
+  const words=norm([d.id,d.name,d.character_description||'',d.description,d.tag_number,...d.tag_colors].join(' ')).match(/[\p{L}\p{N}]+/gu)||[];
   return terms.every(term=>words.some(word=>word.startsWith(term)));
  }
  function filtered(){
@@ -34,7 +34,7 @@
   document.querySelectorAll('.thumbnail').forEach((n,i)=>{n.classList.toggle('active',i===index);n.setAttribute('aria-pressed',String(i===index));});
  }
  function openDog(d,source){
-  current=d;index=0;trigger=source;$('#dog-title').textContent=d.name;$('#dog-id').textContent='Карточка '+d.id;$('#detail-description').textContent=d.description;$('#copy-status').textContent='';
+  current=d;index=0;trigger=source;$('#dog-title').textContent=d.name;$('#dog-id').textContent='Карточка '+d.id;$('#detail-description').textContent=d.character_description||'';$('#detail-description').hidden=!String(d.character_description||'').trim();$('#copy-status').textContent='';
   const tags=$('#detail-tags');tags.replaceChildren();if(d.status==='home')tags.append(node('span','detail-tag','♡ Дома'));else if(d.status==='shelter')tags.append(node('span','detail-tag','В приюте'));
   if(d.tag_number)tags.append(node('span','detail-tag','Бирка №'+d.tag_number));
   d.tag_colors.forEach(c=>{const tag=node('span','detail-tag'),dot=node('span','tag-dot');dot.style.background=colors[c]||'#c5cbbd';tag.append(dot,document.createTextNode(c==='оранжевая'?'Оранжево-красная':c[0].toUpperCase()+c.slice(1)));tags.append(tag);});

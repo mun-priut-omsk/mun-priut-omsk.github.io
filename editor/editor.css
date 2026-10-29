@@ -3,3 +3,5 @@
 .tile[draggable="true"]{cursor:grab}.tile[draggable="true"]:active{cursor:grabbing}.tile-top{min-height:34px;gap:4px}.drag-handle{font-size:20px;color:#a68b9b;line-height:1}.cover-badge{font-size:9px;color:#7c3b5c;background:#f0e0e9;border-radius:4px;padding:3px 5px;white-space:nowrap}.cover-button{display:block;width:calc(100% - 12px);margin:6px 6px 0;padding:7px 4px;font-size:11px;color:#804565;background:#fff;border-color:#dcc6d3}.cover-button:disabled{opacity:1;cursor:default;color:#765067;background:#f0e4eb;border-color:transparent}.tile.dragging{opacity:.45}.tile.drop-target{outline:3px solid #9f476d;outline-offset:2px;background:#f0e0e9}#photo-status{font-size:13px;color:#804565;min-height:0;margin:8px 0}#photo-status:empty{display:none}
 
 .photo-selection{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:14px 0 4px}.photo-selection span{font-size:12px;color:var(--muted)}.photo-selection button:disabled{cursor:default}
+
+.service-description{border:1px solid var(--line);border-radius:8px;padding:12px}.service-description summary{cursor:pointer;font-size:13px;color:var(--muted)}.service-description[open] summary{margin-bottom:12px}

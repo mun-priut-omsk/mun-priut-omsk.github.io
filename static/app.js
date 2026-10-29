@@ -12,7 +12,7 @@
   if(d.status==='home')photo.append(node('span','home-badge','♡  Дома'));
   photo.append(node('span','photo-amount',d.photos.length+' фото'));
   const body=node('div','card-body'),heading=node('div','card-heading');heading.append(node('h3','',d.name),node('span','','↗'));body.append(heading,node('p','card-id',d.id));
-  const tags=node('div','card-tags'),dot=node('span','tag-dot');dot.style.background=colors[d.tag_colors[0]]||'#c5cbbd';tags.append(dot,node('span','',d.tag_number?'Бирка '+d.tag_number:d.tag_colors.length?'Бирка: '+d.tag_colors.map(c=>c==='оранжевая'?'красная':c).join(', '):'Бирка не определена'));
+  const tags=node('div','card-tags');tags.append(node('span','',d.tag_number?'Бирка '+d.tag_number:'Бирка не указана'));
   body.append(tags);button.append(photo,body);button.addEventListener('click',()=>openDog(d,button));article.append(button);return article;
  }
  function matchesSearch(d,query){
@@ -33,11 +33,16 @@
   $('#previous-photo').hidden=$('#next-photo').hidden=current.photos.length<2;
   document.querySelectorAll('.thumbnail').forEach((n,i)=>{n.classList.toggle('active',i===index);n.setAttribute('aria-pressed',String(i===index));});
  }
+ function appendProfileTags(tags,d){
+  const sex={male:'Мальчик',female:'Девочка'}[d.sex];
+  if(sex)tags.append(node('span','detail-tag',sex));
+  if(String(d.age||'').trim())tags.append(node('span','detail-tag',String(d.age).trim()));
+ }
  function openDog(d,source){
   current=d;index=0;trigger=source;$('#dog-title').textContent=d.name;$('#dog-id').textContent='Карточка '+d.id;$('#detail-description').textContent=d.character_description||'';$('#detail-description').hidden=!String(d.character_description||'').trim();$('#copy-status').textContent='';
   const tags=$('#detail-tags');tags.replaceChildren();if(d.status==='home')tags.append(node('span','detail-tag','♡ Дома'));else if(d.status==='shelter')tags.append(node('span','detail-tag','В приюте'));
   if(d.tag_number)tags.append(node('span','detail-tag','Бирка №'+d.tag_number));
-  d.tag_colors.forEach(c=>{const tag=node('span','detail-tag'),dot=node('span','tag-dot');dot.style.background=colors[c]||'#c5cbbd';tag.append(dot,document.createTextNode(c==='оранжевая'?'Оранжево-красная':c[0].toUpperCase()+c.slice(1)));tags.append(tag);});
+  appendProfileTags(tags,d);
   const thumbnails=$('#thumbnails');thumbnails.replaceChildren(...d.photos.map((p,i)=>{const b=node('button','thumbnail'),im=node('img');b.type='button';b.setAttribute('aria-label','Показать фото '+(i+1));im.src=imageURL(p.thumb);im.alt='';im.loading='lazy';b.append(im);b.addEventListener('click',()=>{index=i;setPhoto();});return b;}));setPhoto();
   const url=new URL(location.href);url.searchParams.set('dog',d.id);history.replaceState(null,'',url);if(!$('#dog-dialog').open)$('#dog-dialog').showModal();document.body.classList.add('dialog-open');$('#close-dialog').focus();
  }

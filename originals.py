@@ -117,7 +117,7 @@ def export_originals(cards,source='local',progress=None,vault=VAULT,exports=EXPO
    name=entry['filename'];stem=Path(name).stem;suffix=Path(name).suffix;number=2
    while name.casefold() in names:name=f'{stem}_{number}{suffix}';number+=1
    names.add(name.casefold());plan.append((path,f'Собаки/{folder}/{name}',entry,key,card['id']))
-  summary.append([card['id'],card.get('name',''),card.get('tag_number',''),', '.join(card.get('tag_colors',[])),card.get('status',''),card.get('description',''),card.get('character_description',''),card.get('sex','unknown'),card.get('age',''),{'small':'Маленький','medium':'Средний','large':'Крупный'}.get(card.get('size'),'Не указан'),len(card['photos']),folder])
+  summary.append([card['id'],card.get('name',''),card.get('tag_number',''),', '.join(card.get('tag_colors',[])),card.get('status',''),card.get('description',''),card.get('character_description',''),card.get('sex','unknown'),card.get('age',''),{'small':'Небольшой','medium':'Средний','large':'Крупный'}.get(card.get('size'),'Не указан'),len(card['photos']),folder])
  exports.mkdir(parents=True,exist_ok=True);size=sum(item[2]['bytes'] for item in plan)
  if shutil.disk_usage(exports).free<size+100*1024*1024:raise ValueError('Недостаточно места для архива оригиналов.')
  stamp=datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S_UTC');destination=exports/f'Оригиналы собак_{stamp}_{uuid.uuid4().hex[:4]}.zip';temporary=destination.with_suffix('.partial')

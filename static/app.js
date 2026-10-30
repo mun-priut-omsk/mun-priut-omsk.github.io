@@ -40,7 +40,7 @@
  function apply(){state.page=1;shown=24;persist();render();showResults();}
  function resetProfile(){Object.assign(state,M.empty());apply();}
  function makeFields(container,prefix){
-  for(const [key,title,options,type] of [['sex','Пол',[['','Любой'],['male','Мальчик'],['female','Девочка']],'radio'],['ages','Возраст',[['puppy','Щенок · до 1 года'],['adult','Взрослая · от 1 до 8 лет'],['senior','Пожилая · от 8 лет']],'checkbox'],['sizes','Размер',[['small','Маленький'],['medium','Средний'],['large','Крупный']],'checkbox']]){
+  for(const [key,title,options,type] of [['sex','Пол',[['','Любой'],['male','Мальчик'],['female','Девочка']],'radio'],['ages','Возраст',[['puppy','Молодая · до 2 лет'],['adult','Взрослая · от 2 до 8 лет'],['senior','Пожилая · от 8 лет']],'checkbox'],['sizes','Размер',[['small','Небольшой'],['medium','Средний'],['large','Крупный']],'checkbox']]){
    const field=node('fieldset','profile-group');field.append(node('legend','',title));for(const [value,label] of options){const item=node('label','profile-option'),input=node('input');input.type=type;input.name=prefix+'-'+key;input.value=value;input.dataset.group=key;item.append(input,node('span','',label));field.append(item);}container.append(field);
   }
   container.addEventListener('change',e=>{const i=e.target;if(!i.matches('input'))return;const selection=prefix==='desktop'?state:draft;if(i.dataset.group==='sex')selection.sex=i.value;else selection[i.dataset.group]=[...container.querySelectorAll('input[data-group="'+i.dataset.group+'"]:checked')].map(n=>n.value);if(prefix==='desktop')apply();else updateDraftCount();});
@@ -72,7 +72,7 @@
   const sex={male:'Мальчик',female:'Девочка'}[d.sex];
   if(sex)tags.append(node('span','detail-tag',sex));
   if(String(d.age||'').trim())tags.append(node('span','detail-tag',String(d.age).trim()));
-  const size={small:'Маленький размер',medium:'Средний размер',large:'Крупный размер'}[d.size];
+  const size={small:'Небольшой размер',medium:'Средний размер',large:'Крупный размер'}[d.size];
   if(size)tags.append(node('span','detail-tag',size));
  }
  function renderCharacterDescription(value){

@@ -18,7 +18,7 @@ for(const age of ['puppy','adult','senior'])for(const size of ['small','medium',
  assert(!M.matches(dog({name:'Собака S1'}),{...base(),ages:[age],sizes:[size]}));
  assert(!M.matches(dog(),{...base(),sex:'female',ages:[age],sizes:[size]}));
 }
-for(const [years,expected] of [[0,'puppy'],[.999,'puppy'],[1,'adult'],[7.999,'adult'],[8,'senior'],[19,'senior'],[-1,null],[null,null],[NaN,null]])assert.equal(M.ageGroup(years),expected);
+for(const [years,expected] of [[0,'puppy'],[1,'puppy'],[1.999,'puppy'],[2,'adult'],[7.999,'adult'],[8,'senior'],[19,'senior'],[-1,null],[null,null],[NaN,null]])assert.equal(M.ageGroup(years),expected);
 // Age is still disabled in production. Explicit sizes use OR within the group, AND with sex.
 const selection={...base(),sex:'male',ages:['puppy','senior'],sizes:['small','medium']};
 assert(M.matches(dog({age_years:8,size:'medium'}),selection,{age:true,size:true}));

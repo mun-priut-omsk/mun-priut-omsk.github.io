@@ -72,7 +72,7 @@
   const sex={male:'Мальчик',female:'Девочка'}[d.sex];
   if(sex)tags.append(node('span','detail-tag',sex));
   if(String(d.age||'').trim())tags.append(node('span','detail-tag',String(d.age).trim()));
-  const size={small:'Маленький',medium:'Средний',large:'Крупный'}[d.size];
+  const size={small:'Маленький размер',medium:'Средний размер',large:'Крупный размер'}[d.size];
   if(size)tags.append(node('span','detail-tag',size));
  }
  function openDog(d,source){

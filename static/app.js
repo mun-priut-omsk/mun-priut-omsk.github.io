@@ -72,6 +72,8 @@
   const sex={male:'Мальчик',female:'Девочка'}[d.sex];
   if(sex)tags.append(node('span','detail-tag',sex));
   if(String(d.age||'').trim())tags.append(node('span','detail-tag',String(d.age).trim()));
+  const size={small:'Маленький',medium:'Средний',large:'Крупный'}[d.size];
+  if(size)tags.append(node('span','detail-tag',size));
  }
  function openDog(d,source){
   current=d;index=0;trigger=source;$('#dog-title').textContent=d.name;$('#dog-id').textContent='Карточка '+d.id;$('#detail-description').textContent=d.character_description||'';$('#detail-description').hidden=!String(d.character_description||'').trim();$('#copy-status').textContent='';

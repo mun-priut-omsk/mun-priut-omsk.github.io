@@ -83,7 +83,7 @@ def load_cards(root=ROOT):
   card=json.loads(file.read_text(encoding='utf-8'));identifier=card.get('id') or 'N'+hashlib.sha256(file.stem.encode()).hexdigest()[:12]
   if identifier in ids:raise ValueError('Повтор номера карточки: '+identifier)
   ids.add(identifier);card['id']=identifier;card['_file']=file.name
-  card.setdefault('name','Собака '+identifier);card.setdefault('description','');card.setdefault('character_description','');card.setdefault('sex','unknown');card.setdefault('age','');card.setdefault('tag_number','');card.setdefault('tag_colors',[]);card.setdefault('status','unknown');card.setdefault('photos',[])
+  card.setdefault('name','Собака '+identifier);card.setdefault('description','');card.setdefault('character_description','');card.setdefault('sex','unknown');card.setdefault('age','');card.setdefault('size','unknown');card.setdefault('tag_number','');card.setdefault('tag_colors',[]);card.setdefault('status','unknown');card.setdefault('photos',[])
   cards.append(card)
  return cards
 
@@ -117,7 +117,7 @@ def export_originals(cards,source='local',progress=None,vault=VAULT,exports=EXPO
    name=entry['filename'];stem=Path(name).stem;suffix=Path(name).suffix;number=2
    while name.casefold() in names:name=f'{stem}_{number}{suffix}';number+=1
    names.add(name.casefold());plan.append((path,f'Собаки/{folder}/{name}',entry,key,card['id']))
-  summary.append([card['id'],card.get('name',''),card.get('tag_number',''),', '.join(card.get('tag_colors',[])),card.get('status',''),card.get('description',''),card.get('character_description',''),card.get('sex','unknown'),card.get('age',''),len(card['photos']),folder])
+  summary.append([card['id'],card.get('name',''),card.get('tag_number',''),', '.join(card.get('tag_colors',[])),card.get('status',''),card.get('description',''),card.get('character_description',''),card.get('sex','unknown'),card.get('age',''),{'small':'Маленький','medium':'Средний','large':'Крупный'}.get(card.get('size'),'Не указан'),len(card['photos']),folder])
  exports.mkdir(parents=True,exist_ok=True);size=sum(item[2]['bytes'] for item in plan)
  if shutil.disk_usage(exports).free<size+100*1024*1024:raise ValueError('Недостаточно места для архива оригиналов.')
  stamp=datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S_UTC');destination=exports/f'Оригиналы собак_{stamp}_{uuid.uuid4().hex[:4]}.zip';temporary=destination.with_suffix('.partial')
@@ -131,7 +131,7 @@ def export_originals(cards,source='local',progress=None,vault=VAULT,exports=EXPO
     if digest.hexdigest()!=entry['sha256']:raise ValueError('Проверка оригинала не пройдена: '+entry['filename'])
     records.append({'card_id':card_id,'asset':key,'file':name,'sha256':entry['sha256']})
     if n%25==0 or n==len(plan):progress(n,len(plan))
-   stream=io.StringIO();writer=csv.writer(stream);writer.writerow(['Номер','Кличка','Бирка','Цвет бирки','Статус','Описание внешности (служебное)','Описание характера (на сайте)','Пол','Возраст','Фото','Папка']);writer.writerows(summary)
+   stream=io.StringIO();writer=csv.writer(stream);writer.writerow(['Номер','Кличка','Бирка','Цвет бирки','Статус','Описание внешности (служебное)','Описание характера (на сайте)','Пол','Возраст','Размер','Фото','Папка']);writer.writerows(summary)
    archive.writestr('Карточки.csv',('\ufeff'+stream.getvalue()).encode('utf-8'))
    archive.writestr('Карточки.json',json.dumps([{k:v for k,v in d.items() if not k.startswith('_')} for d in cards],ensure_ascii=False,indent=2).encode('utf-8'))
    archive.writestr('Экспорт.json',json.dumps({'source':source,'created_at':datetime.now(timezone.utc).isoformat(),'cards':len(cards),'photos':len(plan),'files':records},ensure_ascii=False,indent=2).encode('utf-8'))

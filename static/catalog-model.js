@@ -11,11 +11,11 @@
  function write(url,s){const u=new URL(url);for(const k of ['q','tab','sort','sex','age','size','page'])u.searchParams.delete(k);if(s.q)u.searchParams.set('q',s.q);if(s.tab!=='named')u.searchParams.set('tab',s.tab);if(s.sort!=='name')u.searchParams.set('sort',s.sort);if(s.sex)u.searchParams.set('sex',s.sex);if(s.ages.length)u.searchParams.set('age',s.ages.join(','));if(s.sizes.length)u.searchParams.set('size',s.sizes.join(','));if(s.page>1)u.searchParams.set('page',s.page);return u;}
  function search(d,q){const terms=norm(q).match(/[\p{L}\p{N}]+/gu)||[];if(!terms.length)return true;if(unnamed(d))return false;const words=norm([d.id,d.name,d.character_description,d.description,d.tag_number,...(d.tag_colors||[])].join(' ')).match(/[\p{L}\p{N}]+/gu)||[];return terms.every(t=>words.some(w=>w.startsWith(t)));}
  function ageGroup(years){return typeof years==='number'&&Number.isFinite(years)&&years>=0?(years<1?'puppy':years<8?'adult':'senior'):null;}
- function matches(d,s,available={age:false,size:false}){
+ function matches(d,s,available={age:false,size:true}){
   const named=!unnamed(d);
   if(!(s.tab==='all'||s.tab==='home'&&d.status==='home'||s.tab==='named'&&named&&d.status!=='home'||s.tab==='unnamed'&&!named))return false;
   if(!search(d,s.q)||s.sex&&d.sex!==s.sex)return false;
-  // Until age/size are supplied and their rules agreed, these selections only limit to named dogs.
+  // Age remains nonrestrictive; size is explicitly supplied by the owner in the editor.
   if((s.ages.length||s.sizes.length)&&!named)return false;
   if(available.age&&s.ages.length&&!s.ages.includes(ageGroup(d.age_years)))return false;
   if(available.size&&s.sizes.length&&!s.sizes.includes(d.size))return false;

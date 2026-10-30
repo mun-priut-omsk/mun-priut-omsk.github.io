@@ -52,5 +52,6 @@
   ],
   "character_description": "",
   "sex": "unknown",
-  "age": ""
+  "age": "",
+  "size": "medium"
 }

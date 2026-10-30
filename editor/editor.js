@@ -14,6 +14,15 @@ const element=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==und
 async function api(path,payload){const response=await fetch(path,{method:payload===undefined?'GET':'POST',headers:{'X-Editor-Token':token,...(payload===undefined?{}:{'Content-Type':'application/json'})},...(payload===undefined?{}:{body:JSON.stringify(payload)})});const result=await response.json();if(!response.ok)throw Error(result.error||'Ошибка операции.');return result;}
 function message(text){$('#message').textContent=text;}
 function changed(){dirty=true;$('#dirty-note').textContent='Есть несохранённые изменения';}
+function toggleBoldText(value,start,end){
+ const selected=value.slice(start,end);
+ if(start>=2&&value.slice(start-2,start)==='**'&&value.slice(end,end+2)==='**')return {from:start-2,to:end+2,text:selected,start:start-2,end:end-2};
+ if(selected.startsWith('**')&&selected.endsWith('**')&&selected.length>4)return {from:start,to:end,text:selected.slice(2,-2),start,end:end-4};
+ const text=selected||'текст';return {from:start,to:end,text:'**'+text+'**',start:start+2,end:start+2+text.length};
+}
+function boldDescription(){const input=$('#character-description'),change=toggleBoldText(input.value,input.selectionStart,input.selectionEnd);input.focus();input.setRangeText(change.text,change.from,change.to,'end');input.setSelectionRange(change.start,change.end);changed();}
+$('#bold-description').addEventListener('click',boldDescription);
+$('#character-description').addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&!e.altKey&&e.code==='KeyB'){e.preventDefault();boldDescription();}});
 function discard(){return !dirty||confirm('В форме есть несохранённые изменения. Продолжить без их сохранения?');}
 function options(){const q=norm($('#search').value),picker=$('#picker');picker.replaceChildren();all.filter(d=>norm([d.name,d.id,d.tag_number].join(' ')).includes(q)).forEach(d=>{const option=element('option',d.name+' · '+d.id);option.value=d.id;picker.append(option);});if(current?.id)picker.value=current.id;}
 async function refresh(id){const state=await api('/api/state');if(state.description_fields_version!==4){message('Запущена старая версия редактора. Нажмите «Завершить работу редактора», затем снова запустите «Редактор собак.cmd».');return;}all=state.cards.sort((a,b)=>a.name.localeCompare(b.name,'ru'));$('#original-count').textContent=state.originals+' фото связаны с оригиналами';if(/^https:\/\//.test(state.site_url))$('#public-site').href=state.site_url;options();choose(all.find(d=>d.id===id)||all[0]);}

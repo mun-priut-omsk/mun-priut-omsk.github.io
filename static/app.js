@@ -75,8 +75,13 @@
   const size={small:'Маленький размер',medium:'Средний размер',large:'Крупный размер'}[d.size];
   if(size)tags.append(node('span','detail-tag',size));
  }
+ function renderCharacterDescription(value){
+  const text=String(value||''),fragment=document.createDocumentFragment();let position=0;
+  for(const match of text.matchAll(/\*\*([\s\S]+?)\*\*/g)){fragment.append(document.createTextNode(text.slice(position,match.index)),node('strong','',match[1]));position=match.index+match[0].length;}
+  fragment.append(document.createTextNode(text.slice(position)));return fragment;
+ }
  function openDog(d,source){
-  current=d;index=0;trigger=source;$('#dog-title').textContent=d.name;$('#dog-id').textContent='Карточка '+d.id;$('#detail-description').textContent=d.character_description||'';$('#detail-description').hidden=!String(d.character_description||'').trim();$('#copy-status').textContent='';
+  current=d;index=0;trigger=source;$('#dog-title').textContent=d.name;$('#dog-id').textContent='Карточка '+d.id;$('#detail-description').replaceChildren(renderCharacterDescription(d.character_description));$('#detail-description').hidden=!String(d.character_description||'').trim();$('#copy-status').textContent='';
   const tags=$('#detail-tags');tags.replaceChildren();if(d.status==='home')tags.append(node('span','detail-tag','♡ Дома'));else if(d.status==='shelter')tags.append(node('span','detail-tag','В приюте'));
   if(d.tag_number)tags.append(node('span','detail-tag','Бирка №'+d.tag_number));
   appendProfileTags(tags,d);

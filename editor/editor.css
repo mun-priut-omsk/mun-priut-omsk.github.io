@@ -5,3 +5,5 @@
 .photo-selection{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:14px 0 4px}.photo-selection span{font-size:12px;color:var(--muted)}.photo-selection button:disabled{cursor:default}
 
 .service-description{border:1px solid var(--line);border-radius:8px;padding:12px}.service-description summary{cursor:pointer;font-size:13px;color:var(--muted)}.service-description[open] summary{margin-bottom:12px}
+
+.description-toolbar{display:flex;gap:8px;margin:8px 0}.description-toolbar button{min-height:44px;padding:8px 16px}.description-editor textarea{width:100%}.description-editor .hint{margin-top:8px}

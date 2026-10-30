@@ -1,0 +1,15 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
+const editor=fs.readFileSync('editor/editor.js','utf8');
+const editorContext={};vm.createContext(editorContext);vm.runInContext(editor.slice(editor.indexOf('function toggleBoldText('),editor.indexOf('function boldDescription(')),editorContext);
+const toggle=editorContext.toggleBoldText;
+let result=toggle('Алиса — добрая собака',8,14);assert.equal(result.text,'**добрая**');
+let value='Алиса — добрая собака';value=value.slice(0,result.from)+result.text+value.slice(result.to);let removed=toggle(value,result.start,result.end);assert.equal(value.slice(0,removed.from)+removed.text+value.slice(removed.to),'Алиса — добрая собака');
+assert.equal(toggle('**фраза**',0,9).text,'фраза');assert.equal(toggle('',0,0).text,'**текст**');assert.equal(toggle('строка\nещё строка',0,17).text,'**строка\nещё строка**');
+const app=fs.readFileSync('static/app.js','utf8');
+const textNode=text=>({type:'text',text});
+const context={document:{createDocumentFragment:()=>({children:[],append(...items){this.children.push(...items)}}),createTextNode:textNode},node:(tag,cls,text)=>({type:tag,text})};vm.createContext(context);vm.runInContext(app.slice(app.indexOf(' function renderCharacterDescription('),app.indexOf(' function openDog(')),context);
+const render=context.renderCharacterDescription;
+let fragment=render('Привет **Алиса**!\n**Добрая** собака.');assert.deepEqual(fragment.children.map(n=>n.type),['text','strong','text','strong','text']);assert.equal(fragment.children.map(n=>n.text).join(''),'Привет Алиса!\nДобрая собака.');
+fragment=render('<img src=x onerror=alert(1)> **<script>evil()</script>**');assert.equal(fragment.children[0].type,'text');assert.equal(fragment.children[1].type,'strong');assert.equal(fragment.children[1].text,'<script>evil()</script>');
+for(const plain of ['Обычный текст','Незакрытые **звёздочки','Первая\n\nВторая',''])assert.equal(render(plain).children.map(n=>n.text).join(''),plain);
+console.log('PASS: bold selection/toggle/placeholder/multiline; strong rendering; plain text/newlines preserved; HTML remains inert text');

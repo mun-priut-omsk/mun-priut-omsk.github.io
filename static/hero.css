@@ -49,8 +49,8 @@
 .hero h1 .hero-line{display:block;color:inherit}
 .hero h1 .hero-line>.hero-emphasis{display:inline}
 .hero h1 .hero-line.hero-emphasis{color:#b23f75}
-.hero h1 .hero-line-last{font-size:.8em}
+.hero h1 .hero-line-last{font-size:inherit}
 @media(max-width:600px){
  .hero h1 .hero-line{white-space:nowrap}
- .hero h1 .hero-line-last{font-size:clamp(21px,5.7vw,29px);letter-spacing:-.7px}
+ .hero h1 .hero-line-last{font-size:inherit;letter-spacing:inherit}
 }

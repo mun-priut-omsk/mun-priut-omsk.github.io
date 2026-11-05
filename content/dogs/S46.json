@@ -8,13 +8,12 @@
   ],
   "status": "unknown",
   "photos": [
-    "/media/S46/p06787.webp",
     "/media/S46/p06798.webp",
     "/media/S46/p06689.webp",
-    "/media/S46/p06545.webp",
-    "/media/S46/p06786.webp"
+    "/media/S46/p06545.webp"
   ],
   "character_description": "",
   "sex": "unknown",
-  "age": ""
+  "age": "",
+  "size": "unknown"
 }

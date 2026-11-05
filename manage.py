@@ -62,6 +62,21 @@ def save_card(payload):
   result=commit(paths,'Update dog card '+identifier);result['id']=identifier
   return result
 
+def delete_card(payload):
+ with store.LOCK:
+  old=find_card(payload.get('id'))
+  if not old:raise ValueError('Карточка не найдена. Обновите список.')
+  if payload.get('_revision')!=old['_revision']:raise ValueError('Карточка уже изменилась. Обновите список перед удалением.')
+  if payload.get('confirmed') is not True:raise ValueError('Подтвердите удаление карточки.')
+  folder=(ROOT/'content/dogs').resolve();path=(folder/old['_file']).resolve()
+  if path.parent!=folder:raise ValueError('Неверный путь карточки.')
+  backup=ROOT/'.local/deleted_cards'/(path.stem+'-'+uuid.uuid4().hex+'.json')
+  backup.parent.mkdir(parents=True,exist_ok=True)
+  backup.write_bytes(path.read_bytes())
+  path.unlink()
+  result=commit([path],'Delete dog card '+old['id']);result['deleted_id']=old['id']
+  return result
+
 def move_photos(payload):
  with store.LOCK:
   source=find_card(payload.get('source'));target=find_card(payload.get('target'))
@@ -124,7 +139,7 @@ class Handler(BaseHTTPRequestHandler):
    if path.startswith('/api/'):
     if not self.authorized():return self.respond({'error':'Обновите страницу редактора.'},403)
     if path=='/api/state':
-     index=store.load_index();return self.respond({'description_fields_version':4,'cards':cards(),'originals':len(index['assets']),'site_url':json.loads((ROOT/'settings.json').read_text(encoding='utf-8'))['site_url']})
+     index=store.load_index();return self.respond({'description_fields_version':5,'cards':cards(),'originals':len(index['assets']),'site_url':json.loads((ROOT/'settings.json').read_text(encoding='utf-8'))['site_url']})
     if path.startswith('/api/job/'):return self.respond(JOBS.get(path.rsplit('/',1)[-1],{'state':'error','message':'Задание не найдено.'}))
     return self.respond({'error':'Неизвестная команда.'},404)
    if path.startswith('/download/'):
@@ -151,6 +166,7 @@ class Handler(BaseHTTPRequestHandler):
    payload=json.loads(self.rfile.read(length));path=urlsplit(self.path).path
    if any(job['state']=='running' for job in JOBS.values()) and path not in ('/api/stop',):raise ValueError('Дождитесь завершения обновления или экспорта.')
    if path=='/api/save':return self.respond(save_card(payload))
+   if path=='/api/delete':return self.respond(delete_card(payload))
    if path=='/api/move':return self.respond(move_photos(payload))
    if path=='/api/upload':
     data=base64.b64decode(payload['data'],validate=True)

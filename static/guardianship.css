@@ -12,8 +12,8 @@
 .guardianship-page .walks-section p,.guardianship-page .walks-section li{font-size:17px;line-height:1.65}
 .guardianship-page .walks-section ul{margin-top:20px}
 .guardianship-page .walks-callout{margin-top:30px}
-.guardianship-page .walks-section p>a{text-decoration:underline;text-underline-offset:3px;color:var(--walks-plum)}
-.guardianship-page .walks-section p>a:hover{color:var(--walks-rose)}
+.guardianship-page .walks-section p>a,.guardianship-page .walks-thanks p>a{text-decoration:underline;text-underline-offset:3px;color:var(--walks-plum)}
+.guardianship-page .walks-section p>a:hover,.guardianship-page .walks-thanks p>a:hover{color:var(--walks-rose)}
 .guardianship-page .walks-thanks .walks-eyebrow{font-size:11px;margin-bottom:12px}
 @media(min-width:701px) and (max-width:1100px){.guardianship-page .walks-intro{padding:30px 28px}.guardianship-page .walks-hero h1{font-size:30px}.guardianship-page .walks-lead{font-size:15px}.guardianship-page .walks-summary h2{font-size:20px}}
 @media(max-width:700px){

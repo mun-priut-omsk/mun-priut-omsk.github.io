@@ -102,7 +102,7 @@
  function mergePractice(){if(!practiceEnabled)return;try{const overrides=JSON.parse(localStorage.getItem(practiceKey)||'{}');dogs=dogs.map(d=>({...d,...overrides[d.id]}));$('#practice-banner').hidden=!Object.keys(overrides).length;}catch{}}
  window.addEventListener('storage',e=>{if(e.key===practiceKey)location.reload();});
  fetch(new URL('data/dogs.json',base),{cache:'no-store'}).then(r=>{if(!r.ok)throw Error(r.status);return r.json();}).then(data=>{
-  dogs=data.dogs;practiceEnabled=data.practice_enabled;mergePractice();$('#practice-link').hidden=!practiceEnabled;
+  dogs=data.dogs;practiceEnabled=data.practice_enabled;mergePractice();if($('#practice-link')) $('#practice-link').hidden=!practiceEnabled;
   render();const id=new URL(location.href).searchParams.get('dog');if(id){const d=dogs.find(d=>d.id===id);if(d)openDog(d,null);}
  }).catch(error=>{$('#load-error').hidden=false;$('#result-count').textContent='Каталог недоступен';console.error('Catalog loading failed',error);});
 })();

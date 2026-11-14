@@ -62,3 +62,19 @@
 /* Extend the portrait below the frame so the cutout never leaves a bottom gap. */
 .help-page .walks-portrait img{object-fit:cover;object-position:center top;height:calc(100% + 32px)}
 @media(max-width:700px){.help-page .walks-portrait img{height:calc(100% + 20px)}}
+
+/* Desktop navigation: full-width rows. Mobile styles above stay unchanged. */
+@media(min-width:701px){
+ .help-nav{grid-template-columns:minmax(0,1fr);gap:0;padding:0}
+ .help-nav>a,.help-nav>a:nth-child(n+4){grid-column:auto;display:grid;grid-template-columns:28px minmax(0,1fr) 20px;align-items:center;gap:16px;min-height:66px;box-sizing:border-box;padding:18px 24px;border-radius:0;font-size:18px}
+ .help-nav>a+a{border-top:1px solid var(--walks-border)}
+ .help-nav>a:first-child{border-radius:22px 22px 0 0}
+ .help-nav>a:last-child{border-radius:0 0 22px 22px}
+ .help-nav>a>span{font-size:15px}
+ .help-nav>a>strong{overflow-wrap:normal}
+ .help-nav>a::after{margin:0;padding:0;font-size:20px;justify-self:end}
+ .help-nav>a:focus-visible{outline-offset:-4px}
+}
+@media(min-width:701px) and (max-width:1100px){
+ .help-nav>a,.help-nav>a:nth-child(n+4){padding-inline:16px;font-size:17px;gap:12px}
+}

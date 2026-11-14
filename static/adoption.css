@@ -1,0 +1,48 @@
+/* Adoption content; site header/footer retain the shared styles. */
+.adoption-page .walks-hero{min-height:375px;grid-template-columns:minmax(0,1fr) 33%}
+.adoption-page .walks-intro{padding:46px 40px 30px}
+.adoption-page .walks-hero h1{font-size:clamp(30px,3vw,42px);line-height:1.2;margin-bottom:40px}
+.adoption-page .walks-lead{max-width:490px;margin-bottom:22px}
+.adoption-page .walks-portrait img{top:20px;height:115%;object-position:top center}
+.adoption-page .walks-summary h2{margin-top:22px;font-size:22px}
+.adoption-page .walks-summary p{font-size:15px;line-height:1.85}
+.adoption-page .walks-section{padding:36px 22px 46px}
+.adoption-page .walks-section h2{margin-bottom:10px}
+.adoption-page .walks-section p{max-width:720px}
+.adoption-page .walks-section .walks-eyebrow{margin-bottom:10px}
+.adoption-page .walks-callout{margin-top:44px}
+.adoption-page .adoption-free{background:#fbe5ed}
+.adoption-walks-link{display:block;color:inherit}
+.adoption-walks-link:hover{background:#f0dbe7;text-decoration:none}
+.adoption-page .adoption-walks-link .walks-eyebrow{margin-bottom:12px}
+.adoption-after-callout{margin:24px 0 0}
+.adoption-page .walks-thanks .walks-eyebrow{font-size:11px;margin-bottom:12px}
+.adoption-page .walks-thanks p:last-child{max-width:760px}
+.adoption-page .walks-section p>a{text-decoration:underline;text-underline-offset:3px}
+.adoption-visit{display:none}
+@media(max-width:1100px) and (min-width:701px){.adoption-page .walks-intro{padding:36px 28px}.adoption-page .walks-hero h1{font-size:32px}.adoption-page .walks-summary h2{font-size:18px}}
+@media(max-width:700px){
+ .adoption-page .walks-hero{min-height:0}
+ .adoption-page .walks-intro{padding:26px 20px 18px}
+ .adoption-page .walks-hero h1{font-size:clamp(26px,7vw,36px);max-width:calc(100% - 104px);margin-bottom:54px;line-height:1.2}
+ .adoption-page .walks-hero h1 br{display:none}
+ .adoption-page .walks-portrait{top:60px;right:16px;width:32%;height:126px;border:0;background:#cc659c}
+ .adoption-page .walks-portrait img{top:5px;height:115%}
+ .adoption-page .walks-lead{font-size:14px;line-height:1.6;margin-bottom:30px}
+ .adoption-page .walks-time{font-size:12px;min-height:32px;padding:7px 16px}
+ .adoption-page .walks-mobile-facts{margin-bottom:42px}
+ .adoption-page .walks-section{padding:0 4px 40px;margin-bottom:28px;border-bottom:1px solid var(--walks-border)}
+ .adoption-page .walks-section:last-child{border-bottom:0;margin-bottom:0}
+ .adoption-page .walks-section h2{font-size:25px;margin-bottom:10px}
+ .adoption-page .walks-section p,.adoption-page .walks-section li{font-size:15px;line-height:1.65}
+ .adoption-page .walks-callout{margin-top:36px;padding:16px 18px}
+ .adoption-page .walks-callout h3{font-size:17px}
+ .adoption-page .walks-callout p{font-size:13px}
+ .adoption-page .walks-thanks{padding:24px 20px}
+ .adoption-page .walks-thanks h2{font-size:25px}
+ .adoption-page .walks-thanks p:last-child{font-size:15px;line-height:1.6}
+ .adoption-visit{display:block;margin-top:28px;border:1px solid var(--walks-border);background:white;border-radius:20px;padding:16px 18px}
+ .adoption-visit h2{font-size:18px;line-height:1.3;margin:0 0 6px;color:var(--walks-plum)}
+ .adoption-visit p{font-size:14px;line-height:1.6;margin:0}
+}
+@media(max-width:360px){.adoption-page .walks-hero h1{font-size:25px;max-width:calc(100% - 90px)}.adoption-page .walks-portrait{width:30%;height:112px}}

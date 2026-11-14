@@ -50,3 +50,7 @@
  .help-page .walks-thanks h2{font-size:24px}
 }
 @media(max-width:360px){.help-page .walks-intro{padding-inline:16px}.help-page .walks-hero h1{font-size:25px;max-width:calc(100% - 85px)}.help-page .walks-portrait{width:29%;height:116px}}
+
+.help-page .help-vk-link{color:var(--walks-plum);text-decoration:underline;text-underline-offset:3px}
+.help-page .help-vk-link:hover{color:var(--walks-rose)}
+.help-page .help-vk-link:focus-visible{outline:3px solid var(--walks-rose);outline-offset:4px}

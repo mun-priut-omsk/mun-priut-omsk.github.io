@@ -46,3 +46,12 @@
  .adoption-visit p{font-size:14px;line-height:1.6;margin:0}
 }
 @media(max-width:360px){.adoption-page .walks-hero h1{font-size:25px;max-width:calc(100% - 90px)}.adoption-page .walks-portrait{width:30%;height:112px}}
+
+/* Prominent catalog link in the first adoption step. */
+.adoption-catalog-button{display:inline-flex;align-items:center;justify-content:center;gap:22px;min-height:48px;max-width:100%;margin-top:6px;padding:13px 24px;border-radius:999px;background:#62133f;color:#fff;font:600 16px/1.35 'Segoe UI',Arial,sans-serif;text-align:center;text-decoration:none;transition:background .18s,box-shadow .18s,transform .18s}
+.adoption-catalog-button span{font-size:23px;line-height:1}
+.adoption-catalog-button:hover{background:#713055;text-decoration:none;box-shadow:0 4px 12px #50103720}
+.adoption-catalog-button:active{background:#501037;transform:translateY(1px);box-shadow:none}
+.adoption-catalog-button:focus-visible{outline:3px solid #b23f75;outline-offset:4px}
+@media(max-width:700px){.adoption-catalog-button{display:flex;width:100%;margin-top:18px;padding:14px 20px}}
+@media(prefers-reduced-motion:reduce){.adoption-catalog-button{transition:none;transform:none}}

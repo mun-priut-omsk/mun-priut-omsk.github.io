@@ -1,0 +1,38 @@
+/* Guardianship content. Header/footer retain shared site styling. */
+.guardianship-page .walks-hero{min-height:395px;grid-template-columns:minmax(0,1fr) 33%}
+.guardianship-page .walks-intro{padding:36px 40px 28px}
+.guardianship-page .walks-hero h1{font-size:clamp(29px,2.8vw,40px);line-height:1.15;margin-bottom:20px;max-width:760px}
+.guardianship-page .walks-lead{font-size:17px;line-height:1.6;max-width:760px;margin-bottom:18px}
+.guardianship-page .walks-portrait img{top:20px;height:114%;object-position:top center}
+.guardianship-page .walks-summary h2{font-size:24px;margin:22px 0 12px}
+.guardianship-page .walks-summary p{font-size:16px;line-height:1.8;margin-bottom:0}
+.guardianship-page .walks-section{padding:36px 22px 40px}
+.guardianship-page .walks-section h2{margin-bottom:12px}
+.guardianship-page .walks-section .walks-eyebrow{margin-bottom:8px}
+.guardianship-page .walks-section p,.guardianship-page .walks-section li{font-size:17px;line-height:1.65}
+.guardianship-page .walks-section ul{margin-top:20px}
+.guardianship-page .walks-callout{margin-top:30px}
+.guardianship-page .walks-section p>a{text-decoration:underline;text-underline-offset:3px;color:var(--walks-plum)}
+.guardianship-page .walks-section p>a:hover{color:var(--walks-rose)}
+.guardianship-page .walks-thanks .walks-eyebrow{font-size:11px;margin-bottom:12px}
+@media(min-width:701px) and (max-width:1100px){.guardianship-page .walks-intro{padding:30px 28px}.guardianship-page .walks-hero h1{font-size:30px}.guardianship-page .walks-lead{font-size:15px}.guardianship-page .walks-summary h2{font-size:20px}}
+@media(max-width:700px){
+ .guardianship-page .walks-hero{min-height:0}
+ .guardianship-page .walks-intro{padding:24px 20px 20px}
+ .guardianship-page .walks-hero h1{font-size:clamp(25px,6.5vw,35px);max-width:calc(100% - 100px);line-height:1.18;margin-bottom:24px}
+ .guardianship-page .walks-portrait{top:60px;right:16px;width:31%;height:130px;border:0}
+ .guardianship-page .walks-portrait img{top:5px;height:112%}
+ .guardianship-page .walks-lead{font-size:15px;line-height:1.55;margin-bottom:20px}
+ .guardianship-page .walks-time{min-height:34px;font-size:13px;padding:8px 18px}
+ .guardianship-page .walks-mobile-facts{margin-bottom:40px}
+ .guardianship-page .walks-section{padding:0 4px 34px;margin-bottom:28px;border-bottom:1px solid var(--walks-border)}
+ .guardianship-page .walks-section:last-child{border:0;margin-bottom:0}
+ .guardianship-page .walks-section h2{font-size:25px;line-height:1.25;margin-bottom:10px}
+ .guardianship-page .walks-section p,.guardianship-page .walks-section li{font-size:15px;line-height:1.6}
+ .guardianship-page .walks-callout{margin-top:24px;padding:16px 18px}
+ .guardianship-page .walks-callout h3{font-size:18px}
+ .guardianship-page .walks-callout p{font-size:14px}
+ .guardianship-page .walks-thanks h2{font-size:25px;line-height:1.2}
+ .guardianship-page .walks-thanks p:last-child{font-size:15px;line-height:1.6}
+}
+@media(max-width:360px){.guardianship-page .walks-hero h1{font-size:25px;max-width:calc(100% - 85px)}.guardianship-page .walks-portrait{width:29%;height:115px}}

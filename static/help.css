@@ -54,3 +54,7 @@
 .help-page .help-vk-link{color:var(--walks-plum);text-decoration:underline;text-underline-offset:3px}
 .help-page .help-vk-link:hover{color:var(--walks-rose)}
 .help-page .help-vk-link:focus-visible{outline:3px solid var(--walks-rose);outline-offset:4px}
+
+/* Extend the portrait below the frame so the cutout never leaves a bottom gap. */
+.help-page .walks-portrait img{object-fit:cover;object-position:center top;height:calc(100% + 32px)}
+@media(max-width:700px){.help-page .walks-portrait img{height:calc(100% + 20px)}}

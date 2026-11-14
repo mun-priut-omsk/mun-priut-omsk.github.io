@@ -36,3 +36,7 @@
  .guardianship-page .walks-thanks p:last-child{font-size:15px;line-height:1.6}
 }
 @media(max-width:360px){.guardianship-page .walks-hero h1{font-size:25px;max-width:calc(100% - 85px)}.guardianship-page .walks-portrait{width:29%;height:115px}}
+
+/* Extend the portrait below the frame so the cutout never leaves a bottom gap. */
+.guardianship-page .walks-portrait img{object-fit:cover;object-position:center top;height:calc(100% + 32px)}
+@media(max-width:700px){.guardianship-page .walks-portrait img{height:calc(100% + 20px)}}
